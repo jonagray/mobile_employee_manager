@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Communications from 'react-native-communications';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
+import { employeeUpdate, employeeSave, employeeDelete, clearEmployeeForm } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 
 class EmployeeEdit extends Component {
@@ -32,7 +32,6 @@ class EmployeeEdit extends Component {
 
   onDecline() {
     this.setState({ showModal: false });
-    this.onButtonPress();
   }
 
   render() {

@@ -2,9 +2,8 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import {
   EMPLOYEE_UPDATE,
-  EMPLOYEE_CREATE,
   EMPLOYEES_FETCH_SUCCESS,
-  EMPLOYEE_SAVE_SUCCESS
+  CLEAR_EMPLOYEE_FORM
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -21,7 +20,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
       .push({ name, phone, shift })
       .then(() => {
-        dispatch({ type: EMPLOYEE_CREATE });
+        dispatch({ type: CLEAR_EMPLOYEE_FORM });
         Actions.pop();
       });
   };
@@ -45,7 +44,7 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
       .set({ name, phone, shift })
       .then(() => {
-        dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
+        dispatch({ type: CLEAR_EMPLOYEE_FORM });
         Actions.pop();
       });
   };
