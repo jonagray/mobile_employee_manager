@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import {clearEmployeeForm, employeeCreate} from '../actions';
 import {Card, CardSection, Button} from './common';
@@ -15,12 +16,14 @@ class EmployeeCreate extends Component {
 
   render() {
     return (
-      <Card>
-        <EmployeeForm {...this.props} />
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
-        </CardSection>
-      </Card>
+      <SafeAreaView>
+        <Card>
+          <EmployeeForm {...this.props} />
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
+          </CardSection>
+        </Card>
+      </SafeAreaView>
     );
   }
 }
